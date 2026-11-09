@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="MC-Petarh — event design and décor, Lagos">
+    <meta name="theme-color" content=" BURGURNDY-NEW">
+    <title>MC-Petarh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
+    <noscript><meta http-equiv="refresh" content="3;url=/Frame/Landing.html"></noscript>
+    <script src="security.js"></script>
+    <style>
+        /* ---------- Colours---------- */
+        :root{
+            --burgundy:      #6b1a2f;
+            --burgundy-deep: #351116;
+            --cream:         #F5F0E8;
+            --gold:          #b8860b;
+            --soft:          #e6d3d6;
+        }
+
+        *{ box-sizing: border-box; }
+
+        html, body{
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background: var(--burgundy-deep);
+        }
+
+        /* Behind the cover: the next page, loading quietly.
+           It starts slightly zoomed and settles into place as the cover lifts. */
+        .stage{
+            position: fixed; inset: 0;
+            background: var(--burgundy-deep);
+            transform: scale(1.07);
+            transform-origin: 50% 60%;
+            transition: transform 1.2s cubic-bezier(.76, 0, .24, 1);
+            will-change: transform;
+        }
+        .is-leaving .stage{ transform: none; }
+        .stage iframe{
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            border: 0; pointer-events: none;
+        }
+
+        /* The burgundy cover, company name in the centre */
+        .cover{
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 1.1s cubic-bezier(.76, 0, .24, 1);
+            will-change: transform;
+        }
+        .cover::before{                      /* gold edge on top */
+            content: "";
+            position: absolute;
+            left: 0; right: 0; top: 0;
+            height: 3px;
+            background: var(--gold);
+            z-index: 2;
+        }
+        .cover::after{                       /* soft curved trailing edge, only seen while the cover lifts */
+            content: "";
+            position: absolute;
+            left: -10%; right: -10%; top: 100%;
+            height: 16vh;
+            background: var(--burgundy-deep);
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        }
+        .is-leaving .cover{ transform: translateY(calc(-100% - 16vh)); }
+
+        /* ---------- Ambient background: breathing glow + drifting light ---------- */
+        .glow, .fx{
+            position: absolute; inset: 0;
+            pointer-events: none;
+            transform: translate3d(calc(var(--mx, 0) * -22px), calc(var(--my, 0) * -22px), 0);
+            transition: transform .9s cubic-bezier(.2, .8, .2, 1);
+        }
+        .fx{
+            overflow: hidden;
+            transform: translate3d(calc(var(--mx, 0) * 16px), calc(var(--my, 0) * 16px), 0);
+        }
+        .glow i{                              /* cream light, very soft */
+            position: absolute;
+            left: 50%; top: 46%;
+            width: 110vmax; height: 110vmax;
+            margin: -55vmax 0 0 -55vmax;
+            background: radial-gradient(circle, rgba(245,240,232,.16) 0%, rgba(245,240,232,.06) 20%, rgba(245,240,232,0) 46%);
+            opacity: 0;
+            animation: glowin 1.6s ease .1s forwards, breathe 7s ease-in-out 1.7s infinite alternate;
+        }
+        .fx i{                                /* floating circle */
+            position: absolute;
+            bottom: -14vh;
+            left: var(--x);
+            width: var(--s); height: var(--s);
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(245,240,232,.95), rgba(245,240,232,0) 70%);
+            opacity: 0;
+            animation: drift var(--d) linear var(--dl) infinite;
+            will-change: transform, opacity;
+        }
+
+        /* ---------- Centre content ---------- */
+        .content{
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 1s cubic-bezier(.55, 0, .8, .4), opacity .7s ease .1s;
+        }
+        .is-leaving .content{
+            transform: translateY(-18vh) scale(.96);
+            opacity: 0;
+        }
+
+        .emblem{
+            position: relative;
+            width: 96px; height: 96px;
+            margin-bottom: 20px;
+            animation: float 5s ease-in-out 2s infinite alternate;
+        }
+        .ring{                                /* thin ring that draws itself, with a tiny orbiting dot */
+            position: absolute;
+            inset: -18px;
+            width: 132px; height: 132px;
+            overflow: visible;
+            animation: spin 26s linear 2s infinite;
+        }
+        .ring-path{
+            fill: none;
+            stroke: rgba(245, 240, 232, .55);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-dasharray: 402.2;
+            stroke-dashoffset: 402.2;
+            animation: draw 1.7s cubic-bezier(.4, 0, .2, 1) .35s forwards;
+        }
+        .ring-dot{
+            fill: var(--cream);
+            opacity: 0;
+            animation: dotin .6s ease 1.8s forwards;
+        }
+        .mark{
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 2px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 34px rgba(0, 0, 0, .28);
+            animation: pop .95s cubic-bezier(.2, .8, .2, 1) .25s both;
+        }
+        .mark img{ width: 74%; height: 74%; object-fit: contain; display: block; }
+        .mark span{
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 30px; font-weight: 600;
+            color: var(--burgundy);
+        }
+
+        .brand{
+            margin: 0;
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(24px, 5vw, 36px);
+            font-weight: 500;
+            letter-spacing: .14em;
+            color: var(--cream);
+        }
+        .brand .mask{                         /* each letter rises out of an invisible slot */
+            display: inline-block;
+            overflow: hidden;
+            padding: .12em 0 .18em .14em;
+            line-height: 1.1;
+            vertical-align: top;
+        }
+        .brand i{
+            display: inline-block;
+            font-style: normal;
+            opacity: 0;
+            transform: translateY(115%);
+            animation: letter .9s cubic-bezier(.2, .8, .2, 1) both;
+            animation-delay: calc(.75s + var(--i) * .07s);
+        }
+        .line{
+            display: block;
+            height: 2px; width: 72px;
+            margin: 16px 0 14px;
+            background: var(--gold);
+            transform: scaleX(0);
+            animation: grow .85s cubic-bezier(.2, .8, .2, 1) 1.6s forwards;
+        }
+        .tag{
+            margin: 0;
+            font-family: "DM Sans", Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--soft);
+            animation: tagrise 1.1s ease 1.85s both;
+        }
+
+        /* ---------- Keyframes ---------- */
+        @keyframes pop     { 0%{ opacity: 0; transform: scale(.6); } 60%{ opacity: 1; transform: scale(1.07); } 100%{ opacity: 1; transform: scale(1); } }
+        @keyframes letter  { from{ opacity: 0; transform: translateY(115%); } to{ opacity: 1; transform: translateY(0); } }
+        @keyframes grow    { from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
+        @keyframes tagrise { from{ opacity: 0; transform: translateY(10px); letter-spacing: .4em; } to{ opacity: 1; transform: translateY(0); letter-spacing: .22em; } }
+        @keyframes draw    { to{ stroke-dashoffset: 0; } }
+        @keyframes dotin   { to{ opacity: 1; } }
+        @keyframes spin    { to{ transform: rotate(360deg); } }
+        @keyframes float   { from{ transform: translateY(0); } to{ transform: translateY(-6px); } }
+        @keyframes glowin  { to{ opacity: 1; } }
+        @keyframes breathe { from{ transform: scale(1); } to{ transform: scale(1.14); } }
+        @keyframes drift   {
+            0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+            12%  { opacity: var(--o); }
+            50%  { transform: translate3d(var(--sx), -60vh, 0); }
+            88%  { opacity: var(--o); }
+            100% { transform: translate3d(0, -120vh, 0); opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce){
+            .stage, .cover, .content, .glow, .fx{ transition: none; }
+            .stage{ transform: none; }
+            .fx{ display: none; }
+            .glow i{ animation: none; opacity: 1; }
+            .emblem, .ring, .mark{ animation: none; }
+            .ring-path{ animation: none; stroke-dashoffset: 0; }
+            .ring-dot{ animation: none; opacity: 1; }
+            .brand i{ animation: none; opacity: 1; transform: none; }
+            .line{ animation: none; transform: none; }
+            .tag{ animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The next page, loading quietly behind the cover -->
+    <div class="stage" aria-hidden="true">
+        <iframe id="next" title="" tabindex="-1"></iframe>
+    </div>
+
+    <!-- The cover -->
+    <main class="cover" id="cover">
+
+        <div class="glow" aria-hidden="true"><i></i></div>
+        <div class="fx" aria-hidden="true">
+            <i style="--x:60%;--s:16px;--d:29s;--dl:-29s;--sx:46px;--o:0.18"></i>
+            <i style="--x:78%;--s:7px;--d:18s;--dl:-16s;--sx:58px;--o:0.2"></i>
+            <i style="--x:26%;--s:5px;--d:23s;--dl:-9s;--sx:-23px;--o:0.19"></i>
+            <i style="--x:91%;--s:22px;--d:16s;--dl:-12s;--sx:59px;--o:0.22"></i>
+            <i style="--x:86%;--s:7px;--d:25s;--dl:0s;--sx:-21px;--o:0.11"></i>
+            <i style="--x:33%;--s:16px;--d:16s;--dl:-14s;--sx:46px;--o:0.19"></i>
+            <i style="--x:28%;--s:16px;--d:19s;--dl:-9s;--sx:18px;--o:0.21"></i>
+            <i style="--x:61%;--s:22px;--d:20s;--dl:-13s;--sx:-34px;--o:0.15"></i>
+            <i style="--x:32%;--s:16px;--d:20s;--dl:0s;--sx:-54px;--o:0.22"></i>
+            <i style="--x:54%;--s:5px;--d:29s;--dl:-9s;--sx:22px;--o:0.25"></i>
+            <i style="--x:90%;--s:5px;--d:19s;--dl:-6s;--sx:-48px;--o:0.16"></i>
+            <i style="--x:93%;--s:12px;--d:22s;--dl:-2s;--sx:-35px;--o:0.15"></i>
+            <i style="--x:42%;--s:9px;--d:16s;--dl:-13s;--sx:-26px;--o:0.14"></i>
+            <i style="--x:15%;--s:5px;--d:16s;--dl:-14s;--sx:29px;--o:0.21"></i>
+            <i style="--x:27%;--s:12px;--d:24s;--dl:-6s;--sx:-44px;--o:0.2"></i>
+            <i style="--x:17%;--s:12px;--d:22s;--dl:-6s;--sx:-35px;--o:0.24"></i>
+        </div>
+
+        <div class="content">
+            <div class="emblem">
+                <svg class="ring" viewBox="0 0 132 132" aria-hidden="true">
+                    <circle class="ring-path" cx="66" cy="66" r="64"></circle>
+                    <circle class="ring-dot" cx="66" cy="2" r="2.6"></circle>
+                </svg>
+                <div class="mark" id="mark"><img src="/Decor/banga.png" alt="Logo-pic" id="logo" onerror="this.parentNode.innerHTML='<span>MP</span>'">
+                </div>
+            </div>
+            <!-- THE COMPANY INTRO LETTERS -->
+            <h1 class="brand" aria-label="MC-PETARH"><span class="mask" aria-hidden="true">
+                <i style="--i:0">M</i>
+                <i style="--i:1">C</i>
+                <i style="--i:2">-</i>
+                <i style="--i:3">P</i>
+                <i style="--i:4">E</i>
+                <i style="--i:5">T</i>
+                <i style="--i:6">A</i>
+                <i style="--i:7">R</i>
+                <i style="--i:8">H</i>
+            </span>
+        </h1>
+            
+            <!-- This is the line that moves under the Logo+Pic -->
+            <span class="line"></span>
+            <!-- The end -->
+            <p class="tag">Event design &amp; décor · Lagos and Beyond</p>
+        </div>
+    </main>
+
+<script>
+    /* ---------- Settings ---------- */
+    var AUTO_REDIRECT = true;        // false = just show the cover page and stay on it
+    var TARGET   = '/Frame/Landing.html';   // the page to open next
+    var MIN_MS   = 9000;             // how long the cover is shown before it scrolls up
+    var MAX_MS   = 10000;             // stop waiting for the next page after this long
+    var SLIDE_MS = 1150;             // matches the 1.1s slide in the CSS above
+
+    var logo = document.getElementById('logo');
+    if (logo && logo.complete && logo.naturalWidth === 0) {
+        document.getElementById('mark').innerHTML = '<span>MP</span>';
+    }
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Gentle mouse parallax on the glow and floating light (desktop only) */
+    if (!reduce && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+        var cover = document.getElementById('cover');
+        window.addEventListener('mousemove', function (e) {
+            cover.style.setProperty('--mx', (e.clientX / window.innerWidth - 0.5).toFixed(3));
+            cover.style.setProperty('--my', (e.clientY / window.innerHeight - 0.5).toFixed(3));
+        }, { passive: true });
+    }
+
+    var leaving = false;
+    function redirect() {
+        try { sessionStorage.setItem('pt-skip', '1'); } catch (e) {}
+        window.location.replace(TARGET);
+    }
+
+    if (!AUTO_REDIRECT) {
+    } else {
+        if (reduce) {
+            setTimeout(redirect, 900);
+        } else {
+            var frame = document.getElementById('next');
+            var loaded = false, timeUp = false, maxUp = false;
+
+            function maybeLeave() {
+                if (leaving || !timeUp) { return; }
+                if (!loaded && !maxUp) { return; }
+                leaving = true;
+                document.body.classList.add('is-leaving');   // cover scrolls UP
+                setTimeout(redirect, SLIDE_MS);              // then redirect
+            }
+
+            frame.addEventListener('load', function () { loaded = true; maybeLeave(); });
+            frame.src = TARGET;
+
+            setTimeout(function () { timeUp = true; maybeLeave(); }, MIN_MS);
+            setTimeout(function () { maxUp = true; timeUp = true; maybeLeave(); }, MAX_MS);
+        }
+    }
+</script>
+</body>
+</html>

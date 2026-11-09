@@ -1,0 +1,1108 @@
+/* Needs Mobile responsiveness all through the page */
+* {
+    box-sizing: border-box;
+    --un-nav:#f8f2eb;
+    --un-nav-txt:#301d1b;
+    --un-btn:#681f2b;
+    --un-btn-txt:#ffffff;
+    --bgc:#351116;
+    --intro-txt:#e5bdb4;
+    --style-txt:#d9aaa0;
+    --talkmore:#fff5ef;
+    --deux-btn:#8c3744;
+    --foot-bgc:#796764;
+    --optional:#796764;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    margin: 0;
+    min-height: 100%;
+}
+.head-cont{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.top-style{
+    width: 100%;
+    padding: 18px clamp(16px, 2.4vw, 32px) 14px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(16px, 2.4vw, 32px);
+    border-bottom: 1px solid rgb(212,201, 181);
+    background-color: var(--un-nav);
+    color: var(--un-nav-txt);
+}
+.top-right-style{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    min-width: 0;
+}
+/* The Style for the company logo */
+.logo{
+    margin-right: 0;
+   object-fit: contain;
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+}
+.logo-text{
+    /* The Top text by the Right hand side */
+    font-family: "Fraunces", serif;
+    font-size: 20px;
+    font-weight: 400;
+    Line-height: 24px;
+    letter-spacing: -0.4px;
+    margin-right: 0px;
+}
+.frst-cont{
+    padding: 10px;
+    display: flex;
+    gap: clamp(12px, 2.4vw, 32px);
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-decoration: none;
+}
+.link-style{
+    background: transparent;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    color: #6b6355;
+    font-weight: 200;
+    text-decoration: none;
+    transition:transform .15s ease, background .2s ease;
+    cursor: pointer;
+}
+.link-style:hover{
+    color: black;
+    font-weight: 500;
+    border-bottom: #b8860b;
+     transform:translateY(-1px);
+}
+.link-style:active,
+.link-style:focus{
+   color: black;
+   font-weight: 500;
+}
+
+.start-btn{
+    background-color: var(--un-btn);
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    color: var(--un-btn-txt);
+    line-height: 16px;
+    letter-spacing: 0.28px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    justify-self: end;
+    margin-left: 0;
+    margin-right: 0;
+}
+/* the changes are too sudden */
+.start-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.14);
+ 
+
+}
+
+/* THis is the section one beginning  */
+
+.book-btn{
+    background-color: var(--deux-btn);
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--un-btn-txt);
+    line-height: 16px;
+    letter-spacing: 0.28px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border: none;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+/* The changes are too sudden */
+.book-btn:hover,
+.book-btn:focus-visible{
+    font-weight: 650;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.14);
+}
+
+.view-btn{
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #f5efe6;
+    line-height: 16px;
+    letter-spacing: 0.28px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-left: 20px;
+    border: 1px solid rgb(212,201, 181);
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+.view-btn:hover{
+    font-weight: 650;
+    color: #1c1b29;
+    background-color: rgb(245,240, 232);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.motto-text{
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #b8860b;
+    min-height: 18px;
+    width: 496px;
+    height: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    max-width: 200px;
+}
+
+.snd-cont{
+    background-color: var(--bgc);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+    min-height: 720px;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+    flex-direction: row;
+}
+
+.Text-cont{
+    min-height: 100%;
+    padding-left: 24px;
+    padding-top: 18px;
+    padding-right: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 0 0 52%;
+    order: 1;
+}
+.text-cont{ 
+    margin-bottom: 20px;
+}
+.landing-img{
+    position: relative;
+    flex: 0 0 48%;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100%;
+    box-sizing: border-box;
+    margin-left: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 25px;
+    padding-top: 50px;
+    order: 2;
+}
+.landing-img img {
+    width: min(100%, 720px);
+    height: 535px;
+    object-fit: cover;
+    border-radius: 30px;
+    display: block;
+    position: relative;
+    right: 10px;
+    margin-top: 0;
+}
+.Big-Text{
+    font-family: "Fraunces", serif;
+    font-size: 86.4px;
+    font-weight: 300;
+    line-height: 93.3px;
+    letter-spacing: -1.73px;
+    color: var(--un-btn-txt);
+    width: 100%;
+    max-width: 496px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: left;
+}
+
+.inline{
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--style-txt);
+}
+
+.Small-text{
+    font-family: "DM Sans", sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color:var(--talkmore);
+    min-height: 50px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.cta-group{
+    margin-top: 20px;
+    min-height: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.feats-cont{
+    font-family: "Fraunces", serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #6b6355;
+    line-height: 32px;
+    letter-spacing: 0px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(212,201, 181);
+    border-bottom:1px solid rgb(212,201, 181);
+    background-color: var(--un-nav);
+}
+.feats-amount h6,
+.feats-time h6,
+.feats-location h6 {
+    margin: 0;
+    font-size: clamp(2.1rem, 2vw, 3.2rem);
+    line-height: 1;
+    font-weight: 470;
+    padding: 0px;
+}
+.small-text{
+    display: block;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--un-nav-txt);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    min-height: 20px;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 6px;
+}
+.feats-amount{ 
+    flex: 1;
+    min-height: 30px;
+    padding-left: 20px;
+    border-right: 1px solid #9caf97;
+    box-sizing: border-box;
+}
+
+.feats-time{
+    flex: 1;
+    min-height: 30px;
+    border-right: 1px solid #9caf97;
+    box-sizing: border-box;
+}
+
+.feats-location{
+    flex: 1;
+    min-height: 30px;
+    box-sizing: border-box;
+}
+/*  */
+/* Supporting sections complete the destinations used by the shared navigation. */
+.about-cont {
+    padding: 96px clamp(20px, 8vw, 120px);
+    background: #f5f0e8;
+}
+
+.about-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(32px, 6vw, 80px);
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.about-image {
+    display: block;
+    width: 100%;
+    height: 520px;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.about-copy {
+    display: grid;
+    justify-items: start;
+    gap: 20px;
+}
+
+.section-title {
+    margin: 0;
+    color: var(--bgc);
+    font-family: "Fraunces", serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.about-text {
+    max-width: 52ch;
+    margin: 0;
+    color: #6b6355;
+    font-family: "DM Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.services-section {
+    padding: 88px clamp(20px, 8vw, 120px);
+    background: #fbfaf7;
+}
+
+.services-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.services-wrap > .section-title {
+    max-width: 18ch;
+    margin-bottom: 32px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px;
+    border: 1px solid rgb(212, 201, 181);
+    border-radius: 16px;
+    background: #fff;
+}
+
+.service-card h3 {
+    margin: 0;
+    color: var(--bgc);
+    font-family: "Fraunces", serif;
+    font-size: 22px;
+}
+
+.service-card p {
+    flex: 1;
+    margin: 0;
+    color: #6b6355;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.6;
+}
+
+.service-card a {
+    color: #681f2b;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    text-underline-offset: 4px;
+}
+/* Needs a softer hover effect? */
+.service-card:hover{
+    transform: translateY(9px);
+    transform: translateX(-3px);
+}
+/* The end */
+.site-footer {
+   width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background-color: var(--bgc);
+    color: var(--un-btn-txt);
+    margin-top: 50px;
+}
+
+.footer-style {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 28px 52px 40px;
+    box-sizing: border-box;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-left: 10px;
+}
+
+.brand-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.footer-logo-text {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    font-weight: 500;
+}
+
+.footer-tagline {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.handle-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin-right: 18px;
+    padding-bottom: 8px;
+}
+
+.footer-link {
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--light-hover-text);
+    line-height: 24px;
+    text-decoration: none;
+}
+.footer-link:hover{
+    transform:translateY(-1px);
+}
+.footer-link.small {
+    font-size: 13px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 6px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--un-btn-txt);
+    border-radius: 50%;
+    color: var(--un-btn-txt);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.social-icon i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 52px 0;
+    margin: 0;
+    border-top: 1px solid var(--footer-divider);
+    color: var(--footer-secondary-text);
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+
+/* ==========================================================
+   RESPONSIVE SECTION
+   Laptop / desktop (wider than 1100px) is NOT touched.
+   Everything below only applies to smaller screens.
+   ========================================================== */
+
+/* ---------- Small laptops / large tablets (kept as before) ---------- */
+@media (max-width: 1100px) {
+    .top-style {
+        gap: 16px;
+    }
+
+    .frst-cont {
+        gap: 16px;
+    }
+
+    .start-btn {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .Text-cont {
+        padding-right: 24px;
+    }
+
+    .Big-Text {
+        font-size: clamp(4rem, 7.3vw, 5.4rem);
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+    }
+
+    .landing-img img {
+        height: min(700px, 68vw);
+    }
+
+    .feats-cont {
+        gap: 16px;
+    }
+
+    .about-cont {
+        padding: 72px 32px 80px;
+    }
+
+    .about-wrap {
+        gap: 36px;
+    }
+
+    .about-image {
+        height: 520px;
+    }
+}
+
+/* ---------- TABLETS (up to 1024px) ----------
+   Two columns stay. The photo becomes a tall arch with a thin outline,
+   the headline never breaks inside a word, and the nav stays visible. */
+@media (max-width: 1024px) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    #home,
+    #about,
+    #service {
+        scroll-margin-top: 96px;
+    }
+
+    /* hero layout */
+    .snd-cont {
+        min-height: 0;
+        align-items: stretch;
+        overflow: hidden;   /* keeps the photo's soft shadow inside the hero */
+    }
+
+    .Text-cont {
+        flex: 0 0 52%;
+        width: auto;
+        padding: clamp(32px, 5vw, 56px) clamp(16px, 3vw, 28px) 44px clamp(24px, 4vw, 44px);
+    }
+
+    .landing-img {
+        flex: 0 0 48%;
+        width: auto;
+        margin: 0;
+        padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 44px) 44px 14px;
+    }
+
+    /* the photo: tall arch, whole picture visible, soft outline + depth */
+    .landing-img img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        right: 0;
+        border-radius: 999px 999px 28px 28px;
+        object-position: 50% 52%;
+        box-shadow:
+            0 0 0 7px var(--bgc),
+            0 0 0 8px rgba(229, 189, 180, 0.45),
+            0 28px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    /* headline sized so "extraordinary" always fits on one line */
+    .Big-Text {
+        max-width: 100%;
+        font-size: clamp(2.7rem, 7.4vw, 4.6rem);
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        word-break: normal;
+        overflow-wrap: normal;
+    }
+
+    .Small-text {
+        font-size: 19px;
+        line-height: 1.55;
+    }
+
+    .cta-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    .book-btn,
+    .view-btn {
+        margin: 0;
+        padding: 16px 34px;
+        font-size: 15px;
+    }
+
+    /* stats strip */
+    .feats-time,
+    .feats-location {
+        padding-left: 24px;
+    }
+
+    /* services: 2 roomy columns */
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* footer can wrap instead of squeezing */
+    .footer-style {
+        flex-wrap: wrap;
+        row-gap: 22px;
+        padding: 28px 32px 36px;
+    }
+
+    .handle-box {
+        margin-right: 0;
+    }
+
+    .footer-bottom {
+        padding: 18px 32px 0;
+    }
+}
+
+/* ---------- Tablet portrait: about section stacks ---------- */
+@media (max-width: 900px) {
+    .about-cont {
+        padding: 64px 32px 72px;
+    }
+
+    .about-wrap {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .about-image {
+        height: auto;
+        aspect-ratio: 16 / 10;
+    }
+
+    .about-copy .motto-text {
+        margin-bottom: 0;
+    }
+}
+
+/* ---------- PHONES (smaller than a tablet, under 768px) ----------
+   Everything stacks. Photo = big arch under the text.
+   Every button sits on its own line and spreads the full width. */
+@media (max-width: 767px) {
+    #home,
+    #about,
+    #service {
+        scroll-margin-top: 104px;
+    }
+
+    /* header: logo + button on top, nav as an even row underneath */
+    .top-style {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px 12px;
+        padding: 12px 18px 6px;
+    }
+
+    .top-right-style {
+        flex: 1 1 auto;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .logo {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .logo-text {
+        font-size: 16px;
+        line-height: 20px;
+        white-space: nowrap;
+    }
+
+    .start-btn {
+        margin: 0;
+        padding: 11px 16px;
+        font-size: 13px;
+        line-height: 18px;
+        text-align: center;
+        white-space: nowrap;
+        justify-self: auto;
+    }
+
+    .frst-cont {
+        display: none;
+    }
+
+    .link-style {
+        flex: 1;
+        padding: 12px 6px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    /* hero: stacked */
+    .snd-cont {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+    }
+
+    .Text-cont {
+        order: 1;
+        flex: none;
+        width: 100%;
+        padding: 34px 22px 6px;
+    }
+
+    .text-cont {
+        margin-bottom: 8px;
+    }
+
+    .motto-text {
+        width: auto;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        margin: 0 0 16px;
+    }
+
+    .Big-Text {
+        font-size: clamp(2.6rem, 12.4vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.035em;
+        margin-bottom: 18px;
+    }
+
+    .Small-text {
+        min-height: 0;
+        max-width: 36ch;
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    /* buttons: own line each, full width, bigger */
+    .cta-group {
+        display: grid;
+        gap: 12px;
+        min-height: 0;
+        margin-top: 26px;
+    }
+
+    .book-btn,
+    .view-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 58px;
+        margin: 0;
+        padding: 18px 28px;
+        font-size: 16px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .book-btn:active,
+    .view-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* the photo: big arch, centred */
+    .landing-img {
+        order: 2;
+        flex: none;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 30px 26px 44px;
+        justify-content: center;
+    }
+
+    .landing-img img {
+        width: 100%;
+        max-width: 460px;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        right: 0;
+        border-radius: 999px 999px 26px 26px;
+        object-position: 50% 52%;
+        box-shadow:
+            0 0 0 7px var(--bgc),
+            0 0 0 8px rgba(229, 189, 180, 0.45),
+            0 24px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    /* stats strip: three even, centred columns */
+    .feats-cont {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 0;
+        padding: 20px 4px;
+    }
+
+    .feats-amount,
+    .feats-time,
+    .feats-location {
+        min-height: 0;
+        padding: 0 8px;
+        text-align: center;
+    }
+
+    .feats-amount h6,
+    .feats-time h6,
+    .feats-location h6 {
+        font-size: clamp(1.45rem, 7vw, 2rem);
+        white-space: nowrap;
+    }
+
+    .small-text {
+        max-width: none;
+        margin: 6px auto 0;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* about */
+    .about-cont {
+        padding: 56px 22px 64px;
+    }
+
+    .about-wrap {
+        gap: 26px;
+    }
+
+    .about-image {
+        aspect-ratio: 5 / 4;
+        border-radius: 22px;
+    }
+
+    .about-copy {
+        justify-items: stretch;
+        gap: 16px;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 9vw, 2.6rem);
+    }
+
+    .about-text {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    /* services: one card per row */
+    .services-section {
+        padding: 56px 22px 64px;
+    }
+
+    .services-wrap .motto-text {
+        margin-bottom: 14px;
+    }
+
+    .services-wrap > .section-title {
+        max-width: none;
+        margin-bottom: 24px;
+    }
+
+    .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .service-card {
+        gap: 10px;
+        padding: 22px 20px;
+    }
+
+    .service-card a {
+        padding: 6px 0;
+        font-size: 15px;
+    }
+
+    /* footer: stacked, easy to tap */
+    .site-footer {
+        margin-top: 0;
+    }
+
+    .footer-style {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 34px 22px 26px;
+    }
+
+    .footer-brand {
+        gap: 12px;
+        margin-left: 0;
+    }
+
+    .footer-logo-text {
+        font-size: 24px;
+    }
+
+    .handle-box {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 6px 22px;
+        margin-right: 0;
+        padding-bottom: 0;
+    }
+
+    .footer-link {
+        padding: 8px 0;
+    }
+
+    .social-links {
+        margin-left: auto;
+    }
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 16px 22px calc(18px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .footer-bottom p {
+        margin-bottom: 0;
+    }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 380px) {
+    .top-style {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .logo-text {
+        font-size: 14px;
+    }
+
+    .start-btn {
+        padding: 10px 13px;
+        font-size: 12.5px;
+    }
+
+    .Text-cont {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .landing-img {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .about-cont,
+    .services-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+
+@media (max-width: 340px) {
+    .start-btn {
+        max-width: 112px;
+        line-height: 1.2;
+        white-space: normal;
+    }
+}
+
+/* Touch screens: no "stuck" hover shifts after a tap */
+@media (hover: none) {
+    .service-card:hover {
+        transform: none;
+    }
+
+    .book-btn:hover,
+    .start-btn:hover,
+    .view-btn:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan an event with MC-Petarh.">
+    <title>Plan an Event | MC-Petarh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="/Paint/booking-page.css">
+     <script src="../security.js"></script>
+</head>
+<body>
+    <!-- THis is the top head section of the page -->
+    <div class="head-cont">
+    <header class="top-style">
+        <div class="top-right-style">
+            <!-- The Company Logo plus Company Text -->
+        <img src="/Decor/banga.png" alt="MC-Petarh logo" class="logo">
+        <p class="logo-text">MC - PETARH</p>
+        </div>
+        <!-- The Navbar Section -->
+        <nav class="frst-cont">
+                 <a href="Landing.html#home" class="link-style">Home</a>
+                 <a href="Landing.html#about" class="link-style">About</a>
+                 <a href="Landing.html#service" class="link-style">Services</a>
+        </nav>
+        <!-- Left Intro-Button -->
+        <a href="Landing.html" class="start-btn"><span aria-hidden="true">&rarr;</span> To Homepage</a>
+    </header>
+    </div>
+    <div class="frst-order-cont">
+        <p class="motto">LET'S RESERVE YOUR DATE</p>
+        <p class="intro-head-text"> Book your event now</p>
+        <p class="intro-text">Tell us the details and we'll follow up within 48 hours to confirm.</p>
+        <!-- This is the fake btn for the header in oreder page -->
+        <a class="contact-btn" href="tel:090060016700" aria-label="Call MC-Petarh at 090060016700">
+            <i class="bx bx-phone" aria-hidden="true"></i>
+            <span>Prefer to call? 090060016700</span>
+        </a>
+    
+    <!-- This is the form and options part -->
+    <main>
+        <p class="opt-hd-txt">Event type</p>
+        <!-- Options disguised as Link Embedded Button -->
+         <div class="options">
+            <a href="couple.html" class="opt">Weddings</a>
+            <a href="Party.html" class="opt-party">Private Celebrations</a>
+            <a href="Bday.html" class="opt-Bday">Birthday</a>
+            <a href="Others.html" class="opt-etc">Others</a>
+         </div>
+        <!-- The Form Filling Section Of the page -->
+        <p class="form-hd-txt">Your Details</p>
+        <form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="7e4f157f-3e5e-4df8-aacd-b2630b90553b">
+              <input type="hidden" name="redirect" id="redirect" value="https://mc-petarh.vercel.app/Frame/thank-you.html">
+              <script>
+                document.getElementById('redirect').value = new URL('thank-you.html', location.href).href;
+              </script>
+
+                <input type="hidden" name="_subject" value="New event booking inquiry">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="Cust_Id" class="form-label">Full Name</label>
+                        <div class="input-box">
+                            <input type="text" id="Cust_Id" name="full_name" placeholder="Adaeze Olayemi" autocomplete="name" required>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="Tel" class="form-label">Phone Number</label>
+                        <div class="input-box">
+                            <input type="tel" id="Tel" name="phone" placeholder="+234 800 000 0000" autocomplete="tel" required>
+                        </div>
+                    </div>
+                </div>
+                <label for="text-area" class="label-text">Tell us about your vision</label>
+                <div class="input-txt-box">
+                    <textarea id="text-area" name="vision" placeholder="Tell us how you want your dream wedding and we'll bring it to life" class="talk-box"></textarea>
+                </div>
+                <div class="bottom-style">
+                    <button class="btn" type="submit">Submit Inquiry</button>
+                    <br>
+                    <p class="bttm-txt">We respond within 48 hours, no commitment required</p>
+                </div>
+        </form>
+    </main>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-style">
+            <div class="footer-brand">
+                <div class="brand-wrap">
+                    <img src="/Decor/banga.png" alt="Logo" class="footer-logo">
+                    <p class="footer-logo-text">MC-Petarh</p>
+                </div>
+                <p class="footer-tagline">Event design and décor, based in Lagos</p>
+            </div>
+
+            <div class="handle-box">
+                <a href="Landing.html#about" class="footer-link">About</a>
+                <a href="Showroom.html" class="footer-link">Gallery</a>
+                <a href="Landing.html#service" class="footer-link">Services</a>
+
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@mcpetarhofficial" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                        <i class="bx bxl-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 MC-Petarh. All rights reserved.</p>
+            <div class="bottom-links">
+                <!-- Fetch an AI drafted privacy and terms and condition page and then link; online sighting -->
+                <a href="Privacy.html" class="footer-link small">Privacy</a>
+                <a href="Terms.html" class="footer-link small">Terms</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

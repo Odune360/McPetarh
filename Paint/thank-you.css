@@ -1,0 +1,181 @@
+/* ---------- Colours (same palette as the landing page) ---------- */
+:root{
+    --bg:        #351116;
+    --bg-deep:   #260b0f;
+    --cream:     #f8f2eb;
+    --soft:      #e5bdb4;
+    --soft-2:    #d9aaa0;
+    --btn:       #8c3744;
+    --btn-dark:  #681f2b;
+    --gold:      #b8860b;
+    --text:      #fff5ef;
+}
+
+*{ box-sizing: border-box; }
+html, body{ margin: 0; min-height: 100%; }
+body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: radial-gradient(120% 90% at 50% 38%, #4a1820 0%, var(--bg) 45%, var(--bg-deep) 100%);
+    color: var(--text);
+    font-family: "DM Sans", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* soft floating light */
+.fx{ position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+.fx i{
+    position: absolute; bottom: -12vh; left: var(--x);
+    width: var(--s); height: var(--s); border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,245,239,.95), rgba(255,245,239,0) 70%);
+    opacity: 0;
+    animation: drift var(--d) linear var(--dl) infinite;
+}
+
+main{
+    position: relative; z-index: 1;
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 44px 24px 28px;
+}
+
+/* logo + animated tick */
+.badge{ position: relative; width: 112px; height: 112px; margin-bottom: 26px; }
+.logo{
+    position: absolute; inset: 14px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--soft);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+    box-shadow: 0 10px 34px rgba(0,0,0,.35);
+    animation: pop .15s cubic-bezier(.2,.8,.2,1) .15s both;
+}
+.logo img{ width: 74%; height: 74%; object-fit: contain; display: block; }
+.logo span{ font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 24px; color: var(--btn-dark); }
+.ring{ position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ring circle{
+    fill: none; stroke: var(--soft); stroke-width: 1.6; stroke-linecap: round;
+    stroke-dasharray: 327; stroke-dashoffset: 327;
+    transform: rotate(-90deg); transform-origin: 50% 50%;
+    animation: draw 1.2s cubic-bezier(.4,0,.2,1) .35s forwards;
+}
+.tick{
+    position: absolute; right: -2px; bottom: 2px;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--btn);
+    border: 2px solid var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    animation: pop .1s cubic-bezier(.2,.8,.2,1) 1.1s both;
+}
+.tick svg{ width: 20px; height: 20px; }
+.tick path{
+    fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 26; stroke-dashoffset: 26;
+    animation: draw-tick .50s ease 1.45s forwards;
+}
+
+.eyebrow{
+    margin: 0 0 14px;
+    font-size: 12px; font-weight: 700; letter-spacing: .2em; color: var(--gold);
+    animation: rise .7s ease .6s both;
+}
+h1{
+    margin: 0 0 16px;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 8.5vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    animation: rise .8s ease .75s both;
+}
+h1 em{ font-style: italic; color: var(--soft); }
+.lead{
+    margin: 0 auto 30px;
+    max-width: 38ch;
+    font-size: clamp(1rem, 2.6vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--soft-2);
+    animation: rise .8s ease .9s both;
+}
+
+.steps{
+    list-style: none; margin: 0 0 34px; padding: 0;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    width: min(100%, 720px);
+    animation: rise .8s ease 1.05s both;
+}
+.steps li{
+    text-align: left;
+    padding: 18px 18px 20px;
+    border: 1px solid rgba(229,189,180,.28);
+    border-radius: 16px;
+    background: rgba(255,245,239,.04);
+}
+.steps b{
+    display: grid; place-items: center;
+    width: 28px; height: 28px; margin-bottom: 12px;
+    border-radius: 50%; border: 1px solid var(--soft);
+    font: 600 13px "DM Sans", Arial, sans-serif; color: var(--soft);
+}
+.steps h2{ margin: 0 0 4px; font: 600 16px "Fraunces", Georgia, serif; color: var(--cream); }
+.steps p{ margin: 0; font-size: 14px; line-height: 1.5; color: var(--soft-2); }
+
+.actions{
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    animation: rise .8s ease 1.2s both;
+}
+.btn{
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 15px 34px; border-radius: 9999px;
+    font: 600 15px "DM Sans", Arial, sans-serif; text-decoration: none;
+    transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+.btn.primary{ background: var(--btn); color: #fff; }
+.btn.primary:hover{ background: var(--btn-dark); transform: translateY(-2px); }
+.btn.ghost{ border: 1.5px solid rgba(248,242,235,.5); color: var(--cream); }
+.btn.ghost:hover{ background: var(--cream); color: var(--bg); transform: translateY(-2px); }
+.btn:focus-visible{ outline: 2px solid var(--soft); outline-offset: 3px; }
+
+.call{
+    margin: 26px 0 0; font-size: 14px; color: var(--soft-2);
+    animation: rise .8s ease 1.35s both;
+}
+.call a{ color: var(--cream); font-weight: 600; text-underline-offset: 3px; }
+
+footer{
+    position: relative; z-index: 1;
+    text-align: center; padding: 14px 24px calc(22px + env(safe-area-inset-bottom, 0px));
+    font-size: 12.5px; color: rgba(229,189,180,.7);
+}
+
+@keyframes pop  { 0%{ opacity: 0; transform: scale(.6); } 60%{ opacity: 1; transform: scale(1.07); } 100%{ opacity: 1; transform: scale(1); } }
+@keyframes rise { from{ opacity: 0; transform: translateY(14px); } to{ opacity: 1; transform: translateY(0); } }
+@keyframes draw { to{ stroke-dashoffset: 0; } }
+@keyframes draw-tick{ to{ stroke-dashoffset: 0; } }
+@keyframes drift{
+    0%{ transform: translate3d(0,0,0); opacity: 0; } 12%{ opacity: var(--o); }
+    50%{ transform: translate3d(var(--sx), -55vh, 0); } 88%{ opacity: var(--o); }
+    100%{ transform: translate3d(0,-115vh,0); opacity: 0; }
+}
+
+/* ---------- Phones: stacked, full-width buttons ---------- */
+@media (max-width: 767px){
+    main{ padding: 34px 22px 22px; }
+    .steps{ grid-template-columns: 1fr; gap: 10px; margin-bottom: 28px; }
+    .steps li{ display: grid; grid-template-columns: 28px 1fr; column-gap: 14px; padding: 16px; }
+    .steps b{ grid-row: span 2; margin: 2px 0 0; }
+    .actions{ flex-direction: column; width: 100%; max-width: 460px; }
+    .btn{ width: 100%; min-height: 58px; padding: 18px 28px; font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .fx{ display: none; }
+    .logo, .tick, .eyebrow, h1, .lead, .steps, .actions, .call{ animation: none; }
+    .ring circle{ animation: none; stroke-dashoffset: 0; }
+    .tick path{ animation: none; stroke-dashoffset: 0; }
+    .btn{ transition: none; }
+}
